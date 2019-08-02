@@ -1,0 +1,18 @@
+TO BUILD FOR IPHONE. REMEMBER TO NAME THE APP IN XCODE: "com.wilfredlopez.letsshop"
+
+1 - ADD CATEGORY TO PRODUCT.
+product.category = {'Men', 'New Arrivals'}
+
+should be a list of categories or null. (if not on category wont show in Storefront);
+
+2 - ADD INVENTORY QTY TO PRODUCT + isAvailable boolean
+shoud be reduced when order is placed. if no inventory it shouldnt show in storefront.
+
+3 - ADD PRODUCT MASTER / VARIANTS WITH SIZE AND COLOR
+all products should have a master. 
+if there is no master when product is created, the master and the added variant is automatically created.
+Master should have a list of variants. variants should have size and color.
+
+
+
+
