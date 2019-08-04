@@ -13,18 +13,17 @@ class CostcoMenuItems extends StatefulWidget {
 }
 
 class _CostcoMenuItemsState extends State<CostcoMenuItems> {
-  // List<String> categories = ['Men', 'Tech'];
-
   //idea each category has their sub categories so we can map them.
-  List<MenuCategory> cats = [
-    // MenuCategory(name: 'Men', children: ['Cloathing', 'Underware']),
-    // MenuCategory(name: 'Tech', children: []),
-    // MenuCategory(name: 'Kids', children: ['Accesories', 'Girls', 'Boys']),
-  ];
+  List<MenuCategory> cats = [];
+
+  @override
+  void initState() {
+    Provider.of<CategoryProvider>(context, listen: false).getCats();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
-    Provider.of<CategoryProvider>(context).getCats();
     cats = Provider.of<CategoryProvider>(context).cats;
 
     return Scaffold(

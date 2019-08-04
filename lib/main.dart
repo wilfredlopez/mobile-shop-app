@@ -49,14 +49,14 @@ class MyApp extends StatelessWidget {
       child: Consumer<Auth>(
           builder: (ctx, auth, child) => MaterialApp(
                 debugShowCheckedModeBanner: false,
-                title: 'MyShop',
+                title: 'Wilfred',
                 theme: ThemeData(
                     pageTransitionsTheme: PageTransitionsTheme(builders: {
                       TargetPlatform.android: CupertinoPageTransitionsBuilder(),
                       TargetPlatform.iOS: CupertinoPageTransitionsBuilder()
                     }),
                     fontFamily: 'Lato',
-                    primarySwatch: Colors.blue,
+                    primarySwatch: Colors.red,
                     accentColor: Colors.deepOrange,
                     textTheme: Theme.of(context).textTheme.copyWith(
                         title: TextStyle(color: Colors.white),

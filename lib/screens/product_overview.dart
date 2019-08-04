@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:letsshop/widgets/MyButtonNavBar/my_button_navbar.dart';
 import 'package:letsshop/widgets/carousel.dart';
 import 'package:letsshop/widgets/customAppBar/customAppBar.dart';
@@ -77,7 +78,7 @@ class _ProductOverviewState extends State<ProductOverview> {
     return Scaffold(
       resizeToAvoidBottomInset: true,
       appBar: CustomAppBar(
-        title: Text('ShopClass'),
+        title: Text('Wilfred'),
         actions: <Widget>[
           Consumer<Cart>(
             builder: (ctx, cart, child) => Badge(
@@ -118,54 +119,56 @@ class _ProductOverviewState extends State<ProductOverview> {
         centerTitle: true,
       ),
       drawer: AddDrawer(),
-      body: Container(
-        child: Stack(
-          // fit: StackFit.loose,
-          children: <Widget>[
-            Positioned(
-              top: 0,
-              height: 80,
-              right: 0,
-              child: CostcoMenu(),
-            ),
-            SizedBox(
-              height: 400,
-            ),
-            Container(
-              margin: EdgeInsets.only(top: 80),
-              child: SingleChildScrollView(
-                child: Column(
-                  mainAxisSize: MainAxisSize.max,
-                  children: <Widget>[
-                    if (currentCat == Categories.Home)
-                      Carousel(listOfImageUrls),
-                    Column(children: [
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Text(
-                          title,
-                          style: Theme.of(context).textTheme.display1,
+      body: SingleChildScrollView(
+        child: Container(
+          child: Stack(
+            // fit: StackFit.loose,
+            children: <Widget>[
+              Positioned(
+                top: 0,
+                height: 80,
+                right: 0,
+                child: CostcoMenu(),
+              ),
+              SizedBox(
+                height: 400,
+              ),
+              Container(
+                margin: EdgeInsets.only(top: 80),
+                child: Container(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.max,
+                    children: <Widget>[
+                      if (currentCat == Categories.Home)
+                        Carousel(listOfImageUrls),
+                      Column(children: [
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(
+                            title,
+                            style: Theme.of(context).textTheme.display1,
+                          ),
                         ),
-                      ),
-                    ]),
-                    Container(
-                      height: 600,
-                      child: isLoading
-                          ? Center(
-                              child: CircularProgressIndicator(
-                                semanticsLabel: 'Loading',
+                      ]),
+                      Container(
+                        height: 600,
+                        child: isLoading
+                            ? Center(
+                                child: CircularProgressIndicator(
+                                  semanticsLabel: 'Loading',
+                                ),
+                              )
+                            : ProductGridView(
+                                showOnlyFavorites: _showOnlyFavorites,
+                                pageIndex: _pageIndex,
                               ),
-                            )
-                          : ProductGridView(
-                              showOnlyFavorites: _showOnlyFavorites,
-                              pageIndex: _pageIndex,
-                            ),
-                    ),
-                  ],
+                      ),
+                    ],
+                  ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
       bottomNavigationBar: MyButtonNavBar(

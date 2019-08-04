@@ -45,7 +45,8 @@ class _CostcoMenuState extends State<CostcoMenu> {
                     color: Colors.black12,
                     padding: EdgeInsets.only(left: 7, right: 7),
                     margin: EdgeInsets.only(top: 0, bottom: 0),
-                    width: 310,
+                    // width: 310,
+                    width: MediaQuery.of(context).size.width * .6,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[
@@ -62,6 +63,7 @@ class _CostcoMenuState extends State<CostcoMenu> {
                             ),
                             onPressed: () {
                               //TODO
+                              //add search functionality
                             },
                           ),
                         )

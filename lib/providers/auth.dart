@@ -50,7 +50,7 @@ class Auth with ChangeNotifier {
   Future<void> _authenticate(
       String email, String password, AuthMode mode) async {
     try {
-      FirebaseUser user;
+      AuthResult user;
       if (mode == AuthMode.Login) {
         user = await FirebaseAuth.instance
             .signInWithEmailAndPassword(email: email, password: password);
@@ -62,10 +62,10 @@ class Auth with ChangeNotifier {
       final timeout = Duration(days: 1);
 
       final token =
-          await user.getIdToken(refresh: false).timeout(Duration(days: 1));
+          await user.user.getIdToken(refresh: false).timeout(Duration(days: 1));
 
-      _userId = user.uid;
-      _token = token;
+      _userId = user.user.uid;
+      _token = token.token;
       _expiryDate = DateTime.now().add(Duration(seconds: timeout.inSeconds));
       autoLogout();
       await _verifyIfAdmin();

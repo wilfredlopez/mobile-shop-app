@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:letsshop/models/menu_category.dart';
 import './costco_button_link.dart';
 
 class CostcoMenuButton extends StatelessWidget {
@@ -68,7 +67,6 @@ class Category extends StatelessWidget {
               color: Colors.white,
             ),
             onPressed: () {
-              //TODO => function to take me to the category page
               Navigator.of(context).pop();
             },
           ),

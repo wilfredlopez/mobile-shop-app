@@ -52,7 +52,7 @@ class _CategoryScreenNewState extends State<CategoryScreenNew> {
     return Scaffold(
       resizeToAvoidBottomInset: true,
       appBar: CustomAppBar(
-        title: Text('ShopClass'),
+        title: Text('WilfredShop'),
         actions: <Widget>[
           Consumer<Cart>(
             builder: (ctx, cart, child) => Badge(

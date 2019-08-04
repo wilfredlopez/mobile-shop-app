@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:letsshop/widgets/MyButtonNavBar/my_button_navbar.dart';
 import 'package:letsshop/widgets/customAppBar/customAppBar.dart';
 
 import 'package:provider/provider.dart';
@@ -54,7 +55,7 @@ class _PDPNewState extends State<PDPNew> {
     return Scaffold(
       resizeToAvoidBottomInset: true,
       appBar: CustomAppBar(
-        title: Text('ShopClass'),
+        title: Text('WilfredShop'),
         actions: <Widget>[
           Consumer<Cart>(
             builder: (ctx, cart, child) => Badge(
@@ -143,19 +144,11 @@ class _PDPNewState extends State<PDPNew> {
           ],
         ),
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _pageIndex,
-        items: [
-          BottomNavigationBarItem(icon: Icon(Icons.shop), title: Text('Shop')),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.computer), title: Text('Tech')),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.more_horiz), title: Text('More')),
-        ],
-        onTap: (value) {
+      bottomNavigationBar: MyButtonNavBar(
+        pageIndex: _pageIndex,
+        onChange: (value) {
           setState(() {
             _pageIndex = value;
-            //TODO
           });
         },
       ),
